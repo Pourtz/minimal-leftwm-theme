@@ -1,0 +1,20 @@
+%{A1:~/.config/leftwm/themes/current/rofi/launcher.sh :}
+%{B#BD93F9}%{F#282A36}    %{F-}%{B-} 
+%{A}
+
+{% for tag in workspace.tags %}
+
+%{T1}
+{% if tag.mine %}%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}%{F#BD93F9}%{+o}  {{tag.name}}  %{-o}%{F-}%{A}
+{% elsif tag.visible %}%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}%{F#BD93F9}  {{tag.name}}  %{F-}%{A}
+{% elsif tag.busy %}%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}%{F#FF79C6}  {{tag.name}}  %{F-}%{A}
+{% else tag.visible %}%{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}%{F#F8F8F2}  {{tag.name}}  %{F-}%{A}
+{% endif %}
+%{T-}
+
+{% endfor %}
+
+%{O20}
+%{A1:leftwm-command "NextLayout" :}%{A3:leftwm-command "PreviousLayout" :}
+%{B#BD93F9}%{F#282A36} · {{ workspace.layout }} · %{F-}%{B-}
+%{A}%{A}
