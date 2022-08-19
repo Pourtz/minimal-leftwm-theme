@@ -1,35 +1,34 @@
-#!/bin/bash
+#!/bin/sh
 
 rofi_command="rofi -theme ~/.config/leftwm/themes/current/rofi/powermenu.rasi"
 
 #### Options ###
-shutdown=" "
+shutdown=""
 reboot="勒"
 lock=""
-suspend="鈴 "
-logout=" "
+suspend="鈴"
+logout=""
 
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
-chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 0)"
-notify-send "$chosen"
+chosen="$(echo "$options" | $rofi_command -dmenu -selected-row 0)"
 case $chosen in
     $lock)
         ~/.config/leftwm/themes/current/scripts/lockscreen
-	      ;;
+	    ;;
     $shutdown)
-        shutdown --poweroff now
+        loginctl poweroff now
         ;;
     $reboot)
-        reboot
+        loginctl reboot
         ;;
     $suspend)
-	      mpc -q pause
-	      amixer set Master mute
-	      systemctl suspend
+	    mpc -q pause
+	    amixer set Master mute
+        loginctl suspend
         ;;
     $logout)
         loginctl terminate-session ${XDG_SESSION_ID-}
-	;;
+	    ;;
 esac
 

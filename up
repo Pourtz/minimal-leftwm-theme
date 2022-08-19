@@ -44,7 +44,7 @@ nm-applet &
 
 # [ WALLPAPER ]
 if [ -x "$(command -v feh)" ]; then
- feh --bg-fill "$SCRIPTPATH"/wallpapers/Arch\ Linux\ \(Text\ Purple\).png
+ feh --bg-fill "$SCRIPTPATH"/wallpapers/Artix.png
 fi
 
 # [ STATUSBAR ]

@@ -45,7 +45,7 @@ element-text {
     text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0.5;
-    vertical-align:                 0.5;
+    vertical-align:                 0;
     margin:                         20px 15px 20px 15px;
 }
 
